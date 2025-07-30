@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import CountryFlag from "react-country-flag";
+import CardMovies from "./card";
 const Language = {
     en: "US",
     it: "IT",
@@ -40,22 +41,21 @@ export default function Movie({ query }) {
                     {movies.length === 0 ? (<h1 className="text-secondary px-4">Film non trovato</h1>) : (
                         <>
                             <h1 className="text-danger px-4">Films</h1>
-                            <ul>
+                           <div className="row h-100">
+                           
+                            {movies.map((movie, index) => (
+                                    <CardMovies movies={movie} key={movie.id}></CardMovies>
 
-                                {movies.map((movie, index) => (
 
-                                    <li key={index}>{movie.title}, {movie.original_title}, <CountryFlag countryCode={Language[movie.original_language]} svg
-                                        style={{ width: '1.5em', height: '1.5em' }} />{movie.original_language}
-                                        <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt="" />
-                                        vote: {Math.ceil((movie.vote_average) / 2)} /5
-                                        {[...Array(5)].map((_, i) => (
-                                            <i key={i} className={`fa-star ${i < Math.ceil((movie.vote_average) / 2) ? "fa-solid text-warning" : "fa-regular text-warning"}`}></i>
-                                        ))}
-                                    </li>
-                                ))}
-                            </ul >
-                        </>
+                                ))}</div>
+
+                                
+                            
+                        </>     
                     )}
+                   
+                   
+                   
 
 
 
