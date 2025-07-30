@@ -40,11 +40,14 @@ export default function Movie({ query }) {
                     <ul>
 
                         {movies.map((movie, index) => (
-                            
+
                             <li key={index}>{movie.title}, {movie.original_title}, <CountryFlag countryCode={Language[movie.original_language]} svg
                                 style={{ width: '1.5em', height: '1.5em' }} />{movie.original_language}
-                                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}  alt="" />
-                                 vote: {Math.ceil((movie.vote_average) /2)} /5
+                                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt="" />
+                                vote: {Math.ceil((movie.vote_average) / 2)} /5
+                                {[...Array(5)].map((_, i) => (
+                                <i key={i} className={`fa-star ${i < Math.ceil((movie.vote_average) / 2) ? "fa-solid text-warning" : "fa-regular"}`}></i>
+                                ))}
                             </li>
                         ))}
                     </ul >
@@ -55,14 +58,17 @@ export default function Movie({ query }) {
                             <li key={index}>{serie.name}, {serie.original_name}, <CountryFlag countryCode={serie.origin_country && serie.origin_country[0] ? serie.origin_country[0] : ""} svg
                                 style={{ width: '1.5em', height: '1.5em' }} />{serie.original_language}
                                 <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} alt="" />
-                                vote: {Math.ceil((serie.vote_average) /2)} /5
+                                vote: {Math.ceil((serie.vote_average) / 2)} /5
+                                {[...Array(5)].map((_, i) => (
+                                <i key={i} className={`fa-star ${i < Math.ceil((serie.vote_average) / 2) ? "fa-solid text-warning" : "fa-regular"}`}></i>
+                                ))}
                             </li>
                         ))}
                     </ul >
                 </>
             )}
 
-                   </>
+        </>
     )
 
 }
