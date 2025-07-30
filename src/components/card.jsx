@@ -1,3 +1,4 @@
+
 import CountryFlag from "react-country-flag";
 
 const Language = {
@@ -13,16 +14,14 @@ const Language = {
 
 export default function CardMovies({ movies }) {
     return (
-       <div className="col col-md-3 h-100">
-            <div className="card p-1 border-0 h-100">
+       <div className="col col-md-3 ">
+            <div className="card p-1 my-2 border-0">
                 <img
                     src={`https://image.tmdb.org/t/p/w342${movies.poster_path}`}
                     className="netflix-card-img"
                     alt={movies.title}
                     style={{
-                        height: "500px",
-                        objectFit: "fill",
-                        
+                        height: "400px",                      
                     }}
                 />
         
@@ -30,6 +29,7 @@ export default function CardMovies({ movies }) {
         </div>
     )
 }
+
 
 
 

@@ -41,21 +41,24 @@ export default function Movie({ query }) {
                     {movies.length === 0 ? (<h1 className="text-secondary px-4">Film non trovato</h1>) : (
                         <>
                             <h1 className="text-danger px-4">Films</h1>
-                           <div className="row h-100">
-                           
-                            {movies.map((movie, index) => (
-                                    <CardMovies movies={movie} key={movie.id}></CardMovies>
+                            <div className="container">
+                                <div className="row">
+
+                                    {movies.map((movie, index) => (
+                                        <CardMovies movies={movie} key={movie.id}></CardMovies>
 
 
-                                ))}</div>
+                                    ))}
+                                </div>
+                            </div>
 
-                                
-                            
-                        </>     
+
+
+                        </>
                     )}
-                   
-                   
-                   
+
+
+
 
 
 
@@ -64,26 +67,20 @@ export default function Movie({ query }) {
                     {series.length > 0 && (
                         <>
                             <h1 className="text-danger px-4">Serie Tv</h1>
-                            <ul>
-
-                                {series.map((serie, index) => (
-
-                                    <li key={index}>{serie.name}, {serie.original_name}, <CountryFlag countryCode={serie.origin_country && serie.origin_country[0] ? serie.origin_country[0] : ""} svg
-                                        style={{ width: '1.5em', height: '1.5em' }} />{serie.original_language}
-                                        <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} alt="" />
-                                        vote: {Math.ceil((serie.vote_average) / 2)} /5
-                                        {[...Array(5)].map((_, i) => (
-                                            <i key={i} className={`fa-star ${i < Math.ceil((serie.vote_average) / 2) ? "fa-solid text-warning" : "fa-regular text-warning"}`}></i>
-                                        ))}
-                                    </li>
-                                ))}
-                            </ul >
+                            <div className="container">
+                                <div className="row">
+                                    {series.map((serie, index) => (
+                                        <CardMovies movies={serie} key={serie.id}></CardMovies>
+                                    ))}
+                                </div>
+                            </div>
                         </>
                     )}
+
                 </>
             )}
 
         </>
     )
-
 }
+     
