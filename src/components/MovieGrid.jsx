@@ -34,29 +34,35 @@ export default function Movie({ query }) {
 
     return (
         <>
-            <h1 className="text-danger px-4">Films</h1>
-            <ul>
+            {query && (
+                <>
+                    <h1 className="text-danger px-4">Films</h1>
+                    <ul>
 
-                {movies.map((movie, index) => (
-                    <li key={index}>{movie.title}, {movie.original_title}, <CountryFlag countryCode={Language[movie.original_language]} svg
-                        style={{ width: '1.5em', height: '1.5em' }} />{movie.original_language}
-                    </li>
-                ))}
-            </ul >
-            <h1 className="text-danger px-4">Serie Tv</h1>
-            <ul>
+                        {movies.map((movie, index) => (
+                            
+                            <li key={index}>{movie.title}, {movie.original_title}, <CountryFlag countryCode={Language[movie.original_language]} svg
+                                style={{ width: '1.5em', height: '1.5em' }} />{movie.original_language}
+                                <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}  alt="" />
+                                 vote: {Math.ceil((movie.vote_average) /2)} /5
+                            </li>
+                        ))}
+                    </ul >
+                    <h1 className="text-danger px-4">Serie Tv</h1>
+                    <ul>
 
-                {series.map((serie, index) => (
-                    <li key={index}>{serie.name}, {serie.original_name}, <CountryFlag countryCode={serie.origin_country && serie.origin_country[0] ? serie.origin_country[0]:""} svg
-                        style={{ width: '1.5em', height: '1.5em' }} />{serie.original_language}
-                    </li>
-                ))}
-            </ul >
-        </>
+                        {series.map((serie, index) => (
+                            <li key={index}>{serie.name}, {serie.original_name}, <CountryFlag countryCode={serie.origin_country && serie.origin_country[0] ? serie.origin_country[0] : ""} svg
+                                style={{ width: '1.5em', height: '1.5em' }} />{serie.original_language}
+                                <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} alt="" />
+                                vote: {Math.ceil((serie.vote_average) /2)} /5
+                            </li>
+                        ))}
+                    </ul >
+                </>
+            )}
 
+                   </>
     )
-
-
-
 
 }
