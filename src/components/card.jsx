@@ -45,3 +45,35 @@ export default function CardMovies({ movies }) {
 
     )
 }
+
+export function CardSeries({series}){
+     return (
+
+        <div className="col col-md-3">
+            <div className="card card-img p-1 my-2 border-0 bg-dark text-white" style={{ minHeight: "400px", height: "400px", position: "relative", overflow: "hidden" }}>
+                <img
+                    src={`https://image.tmdb.org/t/p/w342${series.poster_path}`}
+                    alt={series.title}
+                    style={{
+                        height: "400px",
+                    }} />
+
+                <div className="card-info card-img p-1 my-2 border-0 text-white">
+                    <ul className="list-unstyled">
+                        <li>{series.name}</li>
+                        <li>{series.original_name}</li>
+                        <li><CountryFlag countryCode={Language[series.original_language]} svg
+                            style={{ width: '1.5em', height: '1.5em' }} /></li>
+                        <li>{[...Array(5)].map((_, i) => (
+                            <i key={i} className={`fa-star ${i < Math.ceil((series.vote_average) / 2) ? "fa-solid text-warning" : "fa-regular text-warning"}`}></i>
+                        ))}</li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    )
+}

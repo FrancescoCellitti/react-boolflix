@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import CountryFlag from "react-country-flag";
-import CardMovies from "./card";
+import CardMovies, { CardSeries } from './card';
 const Language = {
     en: "US",
     it: "IT",
@@ -70,7 +70,7 @@ export default function Movie({ query }) {
                             <div className="container">
                                 <div className="row">
                                     {series.map((serie, index) => (
-                                        <CardMovies movies={serie} key={serie.id}></CardMovies>
+                                        <CardSeries series={serie} key={serie.id}></CardSeries>
                                     ))}
                                 </div>
                             </div>
